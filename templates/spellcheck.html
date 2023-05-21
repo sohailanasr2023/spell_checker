@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-header">
+          Spell Checker
+        </div>
+        <div class="card-body">
+          <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="text">Enter text:</label>
+              <textarea class="form-control" id="text" name="text" rows="5"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Check Spelling</button>
+          </form>
+          <hr>
+          {% if text %}
+          <div class="form-group">
+            <label for="corrected_text">Corrected text:</label>
+            <textarea class="form-control" id="corrected_text" name="corrected_text" rows="5">{{ corrected_text }}</textarea>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
